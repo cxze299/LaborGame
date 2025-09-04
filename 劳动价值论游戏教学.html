@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <title>劳动价值论教学游戏</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    header {
+      background: linear-gradient(90deg, #2c3e50 0%, #4ca1af 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .content {
+      padding: 30px;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: #4ca1af;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e1e8ed;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #4ca1af;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    
+    .point {
+      margin-bottom: 25px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .point::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #4ca1af;
+      font-size: 1.5rem;
+    }
+    
+    .point-title {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .point-content {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    
+    .highlight {
+      background: rgba(76, 161, 175, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 3px solid #4ca1af;
+    }
+    
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .concept-card {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e1e8ed;
+    }
+    
+    .concept-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+    
+    .concept-title {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .concept-title::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #4ca1af;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+    
+    .logic-chain {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+    
+    .chain-step {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid #e1e8ed;
+    }
+    
+    .chain-step:hover {
+      background: #f0f9fb;
+      transform: scale(1.02);
+    }
+    
+    .chain-step::after {
+      content: "↓";
+      display: block;
+      font-size: 1.8rem;
+      color: #4ca1af;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    
+    .chain-step:last-child::after {
+      display: none;
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      width: 30px;
+      height: 30px;
+      background: #4ca1af;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .theorist {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(44, 62, 80, 0.05);
+      border-radius: 8px;
+    }
+    
+    .theorist img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      border: 3px solid #4ca1af;
+    }
+    
+    .theorist-info {
+      flex: 1;
+    }
+    
+    .theorist-name {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    
+    .theorist-contribution {
+      color: #555;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #2c3e50;
+      color: white;
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 768px) {
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .chain-step {
+        width: 100%;
+      }
+
+      h5 {
+        font-size: 2rem; 
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    :root {
+      --bg: #f5f8fa;
+      --card: #ffffff;
+      --accent: #2b8cff;
+      --accent-dark: #1a6fd9;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --text: #333;
+      --text-light: #666;
+      --border: #e1e8ed;
+      --shadow: rgba(10, 20, 40, 0.08);
+    }
+    
+    * {
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .wrap {
+      max-width: 1100px;
+      margin: 18px auto;
+      padding: 12px;
+    }
+    
+    h1, h2, h3, h4 {
+      margin: 0 0 10px 0;
+      font-weight: 600;
+    }
+    
+    h1 {
+      font-size: 24px;
+      color: var(--text);
+    }
+    
+    .subtitle {
+      color: var(--text);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px var(--shadow);
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .return-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 10;
+    }
+    
+    .return-btn:hover {
+      background: white;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    
+    .mode-select {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .mode-btn {
+      width: 220px;
+      padding: 25px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .mode-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(43, 140, 255, 0.15);
+      border-color: var(--accent);
+      background: #f0f7ff;
+    }
+    
+    .mode-btn h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    
+    .mode-btn p {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    
+    .role {
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fbfdff;
+      cursor: pointer;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .role::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .role:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(43, 140, 255, 0.15);
+      border-color: rgba(43, 140, 255, 0.35);
+    }
+    
+    .role:hover::before {
+      opacity: 1;
+    }
+    
+    .role.selected {
+      box-shadow: 0 8px 20px rgba(43, 140, 255, 0.2);
+      border-color: var(--accent);
+      background: #f0f7ff;
+    }
+    
+    .role.selected::before {
+      opacity: 1;
+    }
+    
+    .role h3 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+      color: var(--text);
+    }
+    
+    .role p {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 14px;
+      flex-grow: 1;
+    }
+    
+    .meta {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button.ghost {
+      background: transparent;
+      color: #285a33;
+      border: 3px solid #184d72;
+      font-weight: 800;
+    }
+    
+    button.ghost:hover {
+      background: #f5f9ff;
+      border-color: #04060a;
+      color: var(--accent);
+    }
+    
+    .small {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 10;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    
+    .stat-value {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .muted {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    .log {
+      height: 200px;
+      overflow: auto;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    
+    .log-entry {
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .log-entry:last-child {
+      border-bottom: none;
+    }
+    
+    .product-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+      padding: 10px 0;
+    }
+    
+    .topbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .label {
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .explain {
+      background: #fff8e6;
+      border: 1px solid #ffe1a8;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    
+    .explain h4 {
+      margin-top: 0;
+      color: #d48806;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.5s;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+    
+    .badge-primary {
+      background: rgba(43, 140, 255, 0.15);
+      color: var(--accent);
+    }
+    
+    .badge-success {
+      background: rgba(40, 167, 69, 0.15);
+      color: var(--success);
+    }
+    
+    .badge-warning {
+      background: rgba(255, 193, 7, 0.15);
+      color: var(--warning);
+    }
+    
+    .badge-danger {
+      background: rgba(220, 53, 69, 0.15);
+      color: var(--danger);
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 15px;
+      font-size: 18px;
+      color: var(--text);
+    }
+    
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin-left: 15px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .stat-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    .stat-card .value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 5px 0;
+    }
+    
+    .stat-card .label {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    
+    .highlight {
+      background: rgba(43, 140, 255, 0.1);
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    
+    .demo-result {
+      background: #f0f9ff;
+      border-left: 4px solid var(--accent);
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+    }
+    
+    .demo-result p {
+      margin: 5px 0;
+    }
+    
+    .demo-result .value {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .theory-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .theory-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow: auto;
+      padding: 25px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .close-btn:hover {
+      background: #f5f5f5;
+      color: #333;
+    }
+    
+    .theory-content h2 {
+      color: var(--accent);
+      margin-top: 0;
+    }
+    
+    .theory-point {
+      margin-bottom: 15px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .theory-point::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 20px;
+    }
+
+    /* 价格变化动画 */
+    .price-change {
+      animation: pricePulse 1s ease-in-out;
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .roles {
+        grid-template-columns: 1fr;
+      }
+      
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .controls button {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+      
+      .mode-select {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .mode-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- 模式选择界面 -->
+    <div id="modeSelection" class="card">
+      <h1>劳动价值论教学游戏</h1>
+      <div class="subtitle">通过互动体验理解<b>劳动价值论</b>的核心概念</div>
+      <img src="https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/6065fe0aca5b9vhU.gif" alt="Description of the GIF">
+      <div class="mode-select">
+        <div class="mode-btn" onclick="selectMode('demo')">
+          <h3>演示模式</h3>
+          <p>快速体验劳动价值论的核心概念</p>
+          <p class="muted">适合教学演示和快速理解</p>
+        </div>
+        
+        <div class="mode-btn" onclick="selectMode('game')">
+          <h3>游戏模式</h3>
+          <p>完整游戏体验，包含角色选择和生产管理</p>
+          <p class="muted">适合深入学习和完整体验</p>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <button id="theoryBtn" class="ghost" onclick="showTheory()" >劳动价值论简介</button>
+      </div>
+    </div>
+
+    <!-- 游戏模式选择界面 -->
+    <div id="gameMode" class="card" style="display:none">
+      <button class="return-btn" onclick="restartToMode()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        返回模式选择
+      </button>
+      
+      <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap">
+        <div>
+          <div class="label">选择你的角色（每个角色带不同起始条件）</div>
+          <div class="muted">角色会影响起始资金、初始雇员与生产效率，直接改变游戏体验与结局概率。</div>
+        </div>
+        <div>
+          <button id="startBtn" class="small" disabled>开始游戏（请选择角色）</button>
+        </div>
+      </div>
+
+      <div class="roles" id="rolesContainer" aria-hidden="false">
+        <!-- roles injected by JS -->
+      </div>
+    </div>
+
+    <!-- 游戏区域 -->
+    <div id="gameArea" class="card" style="display:none">
+      <button class="return-btn" onclick="restartToMode()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        返回模式选择
+      </button>
+      
+      <div  class="topbar" style="margin-bottom:15px; justify-self: center;">
+        <div class="label">模式：<span id="modeName">游戏模式</span></div>
+        <div class="label">角色：<span id="roleName">—</span></div>
+        <div class="muted">第 <span id="day">1</span> 天 / 共 <span id="totalDays">30</span> 天</div>
+      </div>
+      <div style="text-align:right">
+        <div>💰 <span id="money">0.0</span> 元</div>
+        <div class="muted">库存：<span id="totalInventory">0</span> 件</div>
+      </div>
+    
+      <div class="grid">
+        <div>
+          <!-- 生产管理部分 -->
+          <div class="section-title">生产管理</div>
+          
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:15px;flex-wrap:wrap">
+            <label>生产品种：</label>
+            <select id="productSelect"></select>
+            <button onclick="work()">劳动（点击）</button>
+            <button class="ghost" id="autoBtn" onclick="autoWorkToggle()">开始自动劳动</button>
+          </div>
+
+          <div class="muted">生产进度：<span id="progress">0</span> / <span id="laborNeed">5</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="label">生产效率</div>
+              <div class="value" id="efficiency">—</div>
+              <div class="muted">劳动单位/件</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">雇员数量</div>
+              <div class="value" id="workers">0</div>
+              <div class="muted">日工资支出</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">合作社</div>
+              <div class="value" id="isCoop">否</div>
+              <div class="muted">成员共享收益</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">每日生活费</div>
+              <div class="value" id="dailyCost">20</div>
+              <div class="muted">元/天</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap">
+            <button onclick="sellAll()">去市场卖出全部</button>
+            <button class="ghost" onclick="endDay()">结束当天（收结算）</button>
+            <button class="ghost" onclick="buyTool()">买工具（100元）</button>
+            <button class="ghost" onclick="hireWorker()">雇人（150元）</button>
+            <button class="ghost" onclick="formCoop()">成立合作社（折扣后显示）</button>
+          </div>
+
+          <div class="section-title">NPC 工人（社会）</div>
+          <div id="npcList" class="muted"></div>
+
+          <div class="section-title">游戏结局</div>
+          <div id="ending" class="muted">游戏进行中…</div>
+          <div style="margin-top:10px">
+            <button id="showbutton2" onclick="showTheory()">劳动价值论简介</button>
+            <button id="showbutton3" class="ghost" onclick="showStats()">查看游戏统计</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">市场信息</div>
+          <div class="stat"><div>社会必要劳动时间（平均）</div><div class="stat-value" id="avgTime">—</div></div>
+          <div class="stat"><div>面包价格（元/件）</div><div class="stat-value" id="price_bread">—</div></div>
+          <div class="stat"><div>木椅价格（元/件）</div><div class="stat-value" id="price_chair">—</div></div>
+          <div class="stat"><div>衣服价格（元/件）</div><div class="stat-value" id="price_shirt">—</div></div>
+          <div class="stat"><div>手机价格（元/件）</div><div class="stat-value" id="price_phone">—</div></div>
+          <div class="stat"><div>当日价格波动</div><div class="stat-value" id="vol">—</div></div>
+
+          <div class="section-title">商品明细</div>
+          <div id="productArea"></div>
+
+          <div class="section-title">游戏日志</div>
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+      <div class="footer">劳动价值论教学游戏</div>
+    </div>
+
+    <!-- 演示模式区域 -->
+    <div id="demoArea" class="card" style="display:none;">
+      <button class="return-btn" onclick="restartToMode()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        返回模式选择
+      </button>
+
+      <div class="topbar" style="margin-bottom:15px; justify-self: center;">
+          <div class="label">模式：<span id="demoModeName">演示模式</span></div>
+          <div class="muted"><span id="demoacName">演示模式无需角色选择</span></div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div class="section-title">核心概念演示</div>
+          <div class="explain">
+            <h4>劳动价值论核心差异演示</h4>
+            <p>通过以下按钮直接体验劳动价值论的核心差异：</p>
+            <p>• <strong>自己生产</strong>：模拟玩家个人劳动在一天内的产出与收入，全部收益归玩家。</p>
+            <p>• <strong>雇工生产</strong>：模拟一名工人替玩家生产，显示该工人工资与玩家占有的剩余价值（利润）。</p>
+            <p class="highlight">演示优化：生产数量为随机值，更贴近真实生产情况</p>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap">
+            <button onclick="demoSelfLabor()">自己生产（演示）</button>
+            <button onclick="demoHireLabor()">雇工生产（演示：1名工人）</button>
+          </div>
+          
+          <div id="demoResult"></div>
+          
+          <div class="section-title">理论解释</div>
+          <div class="explain">
+            <h4>劳动价值论核心概念</h4>
+            <p><strong>自己劳动</strong>：劳动者获得全部劳动价值，体现个体劳动的完整回报。</p>
+            <p><strong>雇佣劳动</strong>：工人创造的价值大于其工资，差额形成剩余价值（利润），体现资本对劳动的剥削。</p>
+            <p><strong>剩余价值率</strong>：剩余价值与工资的比例，衡量剥削程度。</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">演示结果</div>
+          <div id="demoResultContainer">
+            <!-- 演示结果将动态显示在这里 -->
+          </div>
+          
+          <div class="section-title">劳动价值论简介</div>
+          <div class="explain">
+            <p><strong>劳动价值论</strong>是马克思主义政治经济学的核心理论之一，它解释了商品价值的来源和资本积累的本质。</p>
+            <p>核心观点：</p>
+            <ul>
+              <li>商品的价值取决于生产它所消耗的社会必要劳动时间</li>
+              <li>工人创造的价值大于其工资，差额形成剩余价值（利润）</li>
+              <li>资本家通过占有剩余价值实现资本积累</li>
+            </ul>
+            <p>本演示通过对比自己劳动和雇佣劳动的收入差异，直观展示剩余价值的产生过程。</p>
+          </div>
+        
+        </div>
+      </div>
+      <div class="footer">劳动价值论教学游戏 · 演示模式</div>
+    </div>
+    
+    <!-- 理论介绍模态框 -->
+    <div id="theoryModal" class="theory-modal">
+      <div class="theory-content">
+        <button id="closebutton" class="close-btn" onclick="closeTheory()">×</button>
+        <h2>劳动价值论简介</h2>
+        <p>劳动价值论是马克思主义政治经济学的核心理论之一，它解释了商品价值的来源和资本积累的本质。</p>
+        
+        <h3>核心观点</h3>
+        <div class="theory-point">
+          <strong>价值由劳动创造</strong>：商品的价值取决于生产它所消耗的社会必要劳动时间
+        </div>
+        <div class="theory-point">
+          <strong>剩余价值理论</strong>：工人创造的价值大于其工资，差额形成剩余价值（利润）
+        </div>
+        <div class="theory-point">
+          <strong>资本积累</strong>：资本家通过占有剩余价值实现资本积累
+        </div>
+        <div class="theory-point">
+          <strong>社会必要劳动时间</strong>：在现有社会正常生产条件下，生产某种商品所需的劳动时间
+        </div>
+        
+        <h3>游戏中的体现</h3>
+        <p>在本游戏中，你可以通过以下方式体验劳动价值论：</p>
+        <ul>
+          <li>比较自己劳动和雇佣劳动的收入差异</li>
+          <li>观察生产效率如何影响商品价值</li>
+          <li>理解剩余价值如何产生和积累</li>
+          <li>体验不同生产组织方式（个体、雇佣、合作社）的差异</li>
+        </ul>
+        
+        <h3>历史背景</h3>
+        <p>劳动价值论由亚当·斯密和大卫·李嘉图等古典经济学家提出，后由卡尔·马克思在《资本论》中系统发展，成为马克思主义政治经济学的基石。</p>
+      </div>
+    </div>
+    <div style="display: block;" id="viewArea2">
+     <div class="modal" id="cModal">
+    <div class="modal-content">
+      <div class="container">
+    <header>
+      <h1>劳动价值论理论框架</h1>
+      <p class="subtitle">从古典经济学到马克思主义政治经济学的核心理论体系</p>
+    </header>
+    </div>
+    <div class="content" id="viewArea" style="display:block">
+      <!-- 1. 背景 -->
+      <div class="section">
+        <h2 class="section-title">1. 背景</h2>
+        <div class="point">
+          <div class="point-content">
+            劳动价值论最初由古典经济学家提出（亚当·斯密、大卫·李嘉图），后来由马克思继承和发展，变成揭示资本主义运作机制的理论核心。
+          </div>
+        </div>
+        
+        <div class="theorist">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Adam_Smith_The_Muir_portrait_%28cropped_2%29.jpg" alt="亚当·斯密">
+          <div class="theorist-info">
+            <div class="theorist-name">亚当·斯密 (1723-1790)</div>
+            <div class="theorist-contribution">古典经济学奠基人，首次系统阐述劳动价值论</div>
+          </div>
+        </div>
+        
+        <div class="theorist">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Portrait_of_David_Ricardo_by_Thomas_Phillips.jpg" alt="大卫·李嘉图">
+          <div class="theorist-info">
+            <div class="theorist-name">大卫·李嘉图 (1772-1823)</div>
+            <div class="theorist-contribution">发展劳动价值论，强调商品价值由劳动量决定</div>
+          </div>
+        </div>
+        
+        <div class="theorist">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Karl_Marx_001.jpg/220px-Karl_Marx_001.jpg" alt="卡尔·马克思">
+          <div class="theorist-info">
+            <div class="theorist-name">卡尔·马克思 (1818-1883)</div>
+            <div class="theorist-contribution">继承并发展劳动价值论，创立剩余价值理论</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 2. 核心观点 -->
+      <div class="section">
+        <h2 class="section-title">2. 核心观点</h2>
+        
+        <div class="point">
+          <div class="point-title">价值的本质</div>
+          <div class="point-content">
+            商品的价值来源于劳动。劳动是创造价值的唯一源泉。
+          </div>
+        </div>
+        
+        <div class="point">
+          <div class="point-title">价值量的决定</div>
+          <div class="point-content">
+            商品的价值量取决于社会必要劳动时间，即在现有社会正常生产条件下，生产某种商品所需的平均劳动时间。
+          </div>
+        </div>
+        
+        <div class="point">
+          <div class="point-title">使用价值 vs 价值</div>
+          <div class="highlight">
+            <p><strong>使用价值</strong>：商品满足人类需要的属性（如面包能吃、衣服能穿）。</p>
+            <p><strong>价值</strong>：商品中凝结的一般人类劳动（不是某个工人辛苦多久，而是社会平均效率下所需的劳动时间）。</p>
+          </div>
+          <div class="point-content">
+            商品是使用价值和价值的统一体。使用价值是价值的物质承担者。
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3. 关键概念 -->
+      <div class="section">
+        <h2 class="section-title">3. 关键概念</h2>
+        
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-title">社会必要劳动时间</div>
+            <div class="point-content">
+              在现有的社会正常生产条件下、平均劳动熟练程度和劳动强度下，生产某种商品所需要的劳动时间。
+            </div>
+          </div>
+          
+          <div class="concept-card">
+            <div class="concept-title">具体劳动与抽象劳动</div>
+            <div class="point-content">
+              <p><strong>具体劳动</strong> → 创造使用价值（面包师做面包，裁缝做衣服）。</p>
+              <p><strong>抽象劳动</strong> → 创造价值（不论是做面包还是做衣服，都可看成消耗人的体力和脑力）。</p>
+            </div>
+          </div>
+          
+          <div class="concept-card">
+            <div class="concept-title">剩余价值</div>
+            <div class="point-content">
+              资本家支付工人工资（相当于劳动力的价值），但工人劳动创造的价值大于工资，多出来的部分就是资本家的利润来源。
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 4. 逻辑链条 -->
+      <div class="section">
+        <h2 class="section-title">4. 逻辑链条</h2>
+        
+        <div class="logic-chain">
+          <div class="chain-step">
+            <div class="step-number">1</div>
+            <div class="point-title">商品</div>
+            <div class="point-content">资本主义生产的基本单位</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">2</div>
+            <div class="point-title">价值由劳动决定</div>
+            <div class="point-content">劳动是价值的唯一源泉</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">3</div>
+            <div class="point-title">价值量由社会必要劳动时间决定</div>
+            <div class="point-content">价值量取决于社会平均劳动时间</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">4</div>
+            <div class="point-title">资本家购买劳动力</div>
+            <div class="point-content">劳动力成为特殊商品</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">5</div>
+            <div class="point-title">工人创造大于工资的价值</div>
+            <div class="point-content">劳动创造的价值 > 劳动力价值</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">6</div>
+            <div class="point-title">产生剩余价值</div>
+            <div class="point-content">价值增值部分被资本家占有</div>
+          </div>
+          
+          <div class="chain-step">
+            <div class="step-number">7</div>
+            <div class="point-title">资本主义积累和剥削的根源</div>
+            <div class="point-content">剩余价值转化为资本，形成资本积累</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>劳动价值论理论框架 | 马克思主义政治经济学核心理论</p>
+    </footer>
+  </div>
+      <div class="close-btn" id="closeModal">×</div>
+    </div>
+  </div>
+    
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // ----- Role definitions -----
+  const ROLES = {
+    small_farm: {
+      key:'small_farm', 
+      name:'小农 / 个体作坊主', 
+      money:0, 
+      laborDelta:0, 
+      hired:0, 
+      coopDiscount:0,
+      desc: '从零开始，以个人劳动维持生计。体验市场竞争压力，理解个体劳动者的困境。'
+    },
+    competitor: {
+      key:'competitor', 
+      name:'竞争者 / 小私营户', 
+      money:200, 
+      laborDelta:-1, 
+      hired:0, 
+      coopDiscount:0,
+      desc: '有少量启动资金，效率略优。处在激烈竞争中，体验资本积累的早期阶段。'
+    },
+    capitalist: {
+      key:'capitalist', 
+      name:'资本家候选 / 小企业主', 
+      money:500, 
+      laborDelta:0, 
+      hired:1, 
+      coopDiscount:0,
+      desc: '有启动资本并已雇佣一人，易于扩张与积累。体验剩余价值的生产过程。'
+    },
+    coop_initiator: {
+      key:'coop_initiator', 
+      name:'合作社发起人', 
+      money:300, 
+      laborDelta:0, 
+      hired:0, 
+      coopDiscount:150,
+      desc: '倾向合作，成立合作社成本更低，尝试集体应对市场风险，体验共同劳动与分配。'
+    }
+  };
+
+  // ----- Game parameters -----
+  const TOTAL_DAYS = 30;
+  let DAILY_LIFE_COST = 15;
+  let COOP_COST_BASE = 400;
+  const TOOL_COST = 100;
+  const HIRE_COST = 150;
+  const WORKER_DAILY_WAGE = 10;
+  const AUTO_WORK_INTERVAL = 500;
+
+  const PRODUCTS = [
+    {id:'bread', name:'面包', labor:4, basePrice: 5},
+    {id:'chair', name:'木椅', labor:8, basePrice: 8},
+    {id:'shirt', name:'衣服', labor:12, basePrice: 12},
+    {id:'phone', name:'手机', labor:20, basePrice: 25}
+  ];
+
+  let npcWorkers = [4,5,6]; // 社会工人效率：每件所需劳动单位
+
+  // ----- state -----
+  let state = {
+    mode: null, // 'demo' or 'game'
+    role: null,
+    day:1,
+    money:0,
+    progress:0,
+    selectedProduct: PRODUCTS[0].id,
+    inventory: {bread:0, chair:0, shirt:0, phone:0},
+    playerLabor: PRODUCTS[0].labor,
+    autoWork:false,
+    toolsUnlocked:false,
+    hiredWorkers:0,
+    coop:false,
+    coopDiscount:0,
+    log:[],
+    stats: {
+      totalProduced: 0,
+      totalSold: 0,
+      totalRevenue: 0,
+      totalWagesPaid: 0,
+      totalToolsBought: 0,
+      workersHired: 0
+    },
+    prices: {
+      bread: 5,
+      chair: 8,
+      shirt: 12,
+      phone: 25
+    },
+    priceTimer: null // 价格变化定时器
+  };
+
+  // ui refs
+  const el = id => document.getElementById(id);
+  const rolesContainer = el('rolesContainer');
+  const startBtn = el('startBtn');
+  const theoryBtn = el('theoryBtn');
+  const theoryModal = el('theoryModal');
+  const modeSelection = el('modeSelection');
+  const gameMode = el('gameMode');
+  const gameArea = el('gameArea');
+  const demoArea = el('demoArea');
+  const viewArea = el('viewArea');
+  const viewArea2 = el('viewArea2');
+
+  // 模式选择
+  function selectMode(mode) {
+    state.mode = mode;
+    modeSelection.style.display = 'none';
+    
+    if (mode === 'demo') {
+      // 显示演示模式
+      demoArea.style.display = 'block';
+      viewArea.style.display = 'none';
+      viewArea2.style.display = 'none';
+      el('demoModeName').innerText = '演示模式';
+    } else {
+      // 显示游戏模式选择
+      gameMode.style.display = 'block';
+      viewArea.style.display = 'none';
+      viewArea2.style.display = 'none';
+      renderRoles();
+    }
+  }
+  
+  // 返回模式选择
+  function restartToMode() {
+    // 重置状态
+    state = { 
+      mode: null,
+      role: null,
+      day:1,
+      money:0,
+      progress:0,
+      selectedProduct:PRODUCTS[0].id, 
+      inventory:{bread:0,chair:0,shirt:0,phone:0}, 
+      playerLabor:PRODUCTS[0].labor, 
+      autoWork:false, 
+      toolsUnlocked:false, 
+      hiredWorkers:0, 
+      coop:false, 
+      coopDiscount:0, 
+      log:[],
+      stats: {
+        totalProduced: 0,
+        totalSold: 0,
+        totalRevenue: 0,
+        totalWagesPaid: 0,
+        totalToolsBought: 0,
+        workersHired: 0
+      },
+      prices: {
+        bread: 5,
+        chair: 8,
+        shirt: 12,
+        phone: 25
+      },
+      priceTimer: null
+    };
+    
+    // 重置UI
+    gameArea.style.display = 'none';
+    gameMode.style.display = 'none';
+    demoArea.style.display = 'none';
+    modeSelection.style.display = 'block';
+    viewArea.style.display = 'block';
+    viewArea2.style.display = 'block';
+
+    // 清除日志
+    el('log').innerHTML = '';
+    el('demoResult').innerHTML = '';
+    
+    // 停止所有定时器
+    stopPriceTimer();
+    if (autoInterval) {
+      clearInterval(autoInterval);
+      autoInterval = null;
+    }
+  }
+  window.restartToMode = restartToMode;
+
+  // render roles on landing
+  function renderRoles(){
+    rolesContainer.innerHTML = '';
+    Object.values(ROLES).forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'role';
+      div.dataset.role = r.key;
+      div.innerHTML = `
+        <div>
+          <h3>${r.name}</h3>
+          <p>${r.desc}</p>
+        </div>
+        <div class="meta">
+          <span>起始资金：<strong>${r.money}</strong> 元</span>
+          <span>初始雇员：<strong>${r.hired}</strong></span>
+        </div>
+      `;
+      div.addEventListener('click', ()=>selectRoleCard(div, r.key));
+      rolesContainer.appendChild(div);
+    });
+  }
+
+  let selectedRoleKey = null;
+  function selectRoleCard(elem, key){
+    // visual
+    document.querySelectorAll('.role').forEach(d=>d.classList.remove('selected'));
+    elem.classList.add('selected');
+    selectedRoleKey = key;
+    startBtn.disabled = false;
+  }
+
+  // theory button
+  function showTheory() {
+    theoryModal.style.display = 'flex';
+  }
+  
+  function closeTheory() {
+    theoryModal.style.display = 'none';
+  }
+  
+     gameArea.addEventListener('click', (e) => {
+    if (e.target === showbutton2) {
+      showTheory();
+    }
+  }); 
+
+   gameArea.addEventListener('click', (e) => {
+    if (e.target === showbutton3) {
+      showStats();
+    }
+  });
+
+  theoryModal.addEventListener('click', (e) => {
+    if (e.target === closebutton) {
+      closeTheory();
+    }
+  });
+
+  // Close modal when clicking outside
+  theoryModal.addEventListener('click', (e) => {
+    if (e.target === theoryModal) {
+      closeTheory();
+    }
+  });
+
+  // Close modal with ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && theoryModal.style.display === 'flex') {
+      closeTheory();
+    }
+  });
+
+  // start button
+  startBtn.addEventListener('click', ()=>{
+    if(!selectedRoleKey){ alert('请先选择一个角色。'); return; }
+    startGame(selectedRoleKey);
+  });
+
+  // ----- start game -----
+  function startGame(roleKey){
+    const r = ROLES[roleKey];
+    state.role = roleKey;
+    state.money = r.money;
+    state.hiredWorkers = r.hired;
+    state.coopDiscount = r.coopDiscount || 0;
+    // set coop cost according to discount
+    state.coopCost = Math.max(0, COOP_COST_BASE - state.coopDiscount);
+    // player labor for selected product
+    state.playerLabor = PRODUCTS.find(p=>p.id===state.selectedProduct).labor + (r.laborDelta || 0);
+    // set UI role name and hide landing
+    el('modeName').innerText = '游戏模式';
+    el('roleName').innerText = r.name;
+    gameMode.style.display = 'none';
+    gameArea.style.display = 'block';
+    el('totalDays').innerText = TOTAL_DAYS;
+    log(`你选择了角色「${r.name}」，起始资金 ${r.money} 元，初始雇员 ${r.hired}。`);
+    initGameUI();
+    updateUI();
+    
+    // 启动价格定时器
+    startPriceTimer();
+  }
+
+  // ----- game UI init -----
+  function initGameUI(){
+    // product select
+    const sel = el('productSelect');
+    sel.innerHTML = '';
+    PRODUCTS.forEach(p=>{
+      const opt = document.createElement('option'); 
+      opt.value = p.id; 
+      opt.textContent = `${p.name}（劳动 ${p.labor}）`;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', e=>{
+      state.selectedProduct = e.target.value;
+      const p = PRODUCTS.find(x=>x.id===state.selectedProduct);
+      const role = ROLES[state.role];
+      
+      // 重置生产进度
+      state.progress = 0;
+      
+      // 更新所需劳动单位
+      state.playerLabor = p.labor + (role.laborDelta || 0);
+      
+      // 更新UI显示
+      el('laborNeed').innerText = state.playerLabor;
+      el('progress').innerText = state.progress;
+      
+      // 更新进度条
+      const progressPercent = (state.progress / state.playerLabor) * 100;
+      el('progressFill').style.width = `${progressPercent}%`;
+      
+      log(`切换生产：${p.name}，每件需劳动 ${state.playerLabor}`);
+      updateUI();
+    });
+    renderProducts();
+  }
+
+  function renderProducts(){
+    const area = el('productArea'); area.innerHTML='';
+    PRODUCTS.forEach(p=>{
+      const div = document.createElement('div'); div.className='product-row';
+      div.innerHTML = `
+        <div>
+          <strong>${p.name}</strong>
+          <div class="muted">劳动单位：${p.labor}</div>
+        </div>
+        <div>库存：<span id="inv_${p.id}">${state.inventory[p.id]}</span></div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  // logging
+  function log(text, type='info'){
+    const t = `[Day ${state.day}] ${text}`;
+    state.log.unshift(`<div class="log-entry ${type}">${t}</div>`);
+    
+    // Keep log to 50 entries max
+    if(state.log.length > 50) state.log.pop();
+    
+    el('log').innerHTML = state.log.join('');
+  }
+
+  function updateUI(){
+    el('day').innerText = state.day;
+    el('money').innerText = state.money.toFixed(1);
+    el('progress').innerText = state.progress;
+    el('laborNeed').innerText = state.playerLabor;
+    
+    // Update progress bar
+    const progressPercent = (state.progress / state.playerLabor) * 100;
+    el('progressFill').style.width = `${progressPercent}%`;
+    
+    el('totalInventory').innerText = Object.values(state.inventory).reduce((a,b)=>a+b,0);
+    el('workers').innerText = state.hiredWorkers;
+    el('isCoop').innerText = state.coop ? '是' : '否';
+    el('dailyCost').innerText = DAILY_LIFE_COST;
+    el('efficiency').innerText = state.playerLabor;
+    
+    // NPC list
+    const nl = el('npcList'); nl.innerHTML='';
+    npcWorkers.forEach((n,i)=>{
+      const d = document.createElement('div'); 
+      d.className='muted'; 
+      d.textContent = `NPC ${i+1}：效率 ${n}（劳动单位/件）`;
+      nl.appendChild(d);
+    });
+    
+    const avg = computeAverageLabor();
+    el('avgTime').innerText = avg.toFixed(2);
+    
+    // 更新每种商品的价格显示
+    PRODUCTS.forEach(p => {
+      const priceEl = document.getElementById('price_' + p.id);
+      if (priceEl) {
+        priceEl.innerText = state.prices[p.id].toFixed(2);
+      }
+    });
+    
+    // Random volatility
+    const volatility = (Math.random() * 1.5).toFixed(2);
+    el('vol').innerText = `±${volatility} 元`;
+    
+    PRODUCTS.forEach(p=>{ 
+      const invEl = document.getElementById('inv_'+p.id); 
+      if(invEl) invEl.innerText = state.inventory[p.id]; 
+    });
+  }
+
+  function computeAverageLabor(){
+    let total = state.playerLabor;
+    npcWorkers.forEach(x=> total += x);
+    return total / (npcWorkers.length + 1);
+  }
+
+  // ======================
+  // 价格定时变化系统
+  // ======================
+  
+  // 启动价格定时器
+  function startPriceTimer() {
+    // 每10秒更新一次价格
+    state.priceTimer = setInterval(changePrices, 10000);
+    
+    // 立即执行一次初始变化
+    changePrices();
+  }
+  
+  // 停止价格定时器
+  function stopPriceTimer() {
+    if (state.priceTimer) {
+      clearInterval(state.priceTimer);
+      state.priceTimer = null;
+    }
+  }
+  
+  // 价格变化函数
+function changePrices() {
+    PRODUCTS.forEach(p => {
+      // 生成随机变化幅度（-50% 到 +50%）
+      const changeRate = (Math.random() - 0.5) * 1.0; // -0.5 到 +0.5
+      
+      // 计算新价格
+      const newPrice = state.prices[p.id] * (1 + changeRate);
+      
+      // 确保价格不低于基础价格的10%
+      state.prices[p.id] = Math.max(p.basePrice * 0.5, newPrice);
+      
+      // 更新UI并添加动画效果
+      const priceEl = document.getElementById('price_' + p.id);
+      if (priceEl) {
+        priceEl.innerText = state.prices[p.id].toFixed(2);
+        
+        // 添加价格变化动画
+        priceEl.classList.add('price-change');
+        setTimeout(() => {
+          priceEl.classList.remove('price-change');
+        }, 1000);
+      }
+    });
+    
+    // 记录价格变化
+    log('市场价格已更新');
+  }
+
+  // actions
+  function work(){
+    if(!state.role){ alert('请先在一级界面选择角色并开始游戏。'); return; }
+    state.progress += 1;
+    if(state.progress >= state.playerLabor){
+      state.progress = 0;
+      state.inventory[state.selectedProduct] += 1;
+      state.stats.totalProduced += 1;
+      log(`你完成了一件 ${PRODUCTS.find(p=>p.id===state.selectedProduct).name}`, 'success');
+    }
+    updateUI();
+  }
+
+  let autoInterval = null;
+  function autoWorkToggle(){
+    if(!state.role){ alert('请先选择角色并开始游戏。'); return; }
+    state.autoWork = !state.autoWork;
+    const btn = el('autoBtn');
+    if(state.autoWork){
+      btn.innerText = '停止自动劳动';
+      btn.classList.add('warning');
+      autoInterval = setInterval(()=>work(), AUTO_WORK_INTERVAL);
+    } else {
+      btn.innerText = '开始自动劳动';
+      btn.classList.remove('warning');
+      clearInterval(autoInterval); autoInterval = null;
+    }
+  }
+  window.autoWorkToggle = autoWorkToggle;
+
+   function sellAll(){
+    if(!state.role){ alert('请先选择角色并开始游戏。'); return; }
+    const totalItems = Object.values(state.inventory).reduce((a,b)=>a+b,0);
+    if(totalItems === 0){ alert('没有库存可以卖出！'); return; }
+    
+    let revenue = 0;
+    PRODUCTS.forEach(p=>{ 
+      // 使用正确的库存键名
+      const inventoryCount = state.inventory[p.id];
+      revenue += inventoryCount * state.prices[p.id]; 
+      state.stats.totalSold += inventoryCount;
+      state.inventory[p.id] = 0; // 重置库存
+    });
+    
+    state.stats.totalRevenue += revenue;
+    
+    if(state.coop){
+      const members = npcWorkers.length + 1;
+      const share = revenue / members;
+      state.money += share;
+      log(`合作社卖出 ${totalItems} 件，你获得分红 ${share.toFixed(1)} 元（总收入 ${revenue.toFixed(1)}）`, 'info');
+    } else {
+      state.money += revenue;
+      log(`你卖出 ${totalItems} 件，获得 ${revenue.toFixed(1)} 元`, 'success');
+    }
+    
+    renderProducts(); 
+    updateUI();
+  }
+  window.sellAll = sellAll;
+
+  function endDay(){
+    if(!state.role){ alert('请先选择角色并开始游戏。'); return; }
+    const unitsPerDay = 40;
+    let npcProduced = 0;
+    npcWorkers.forEach(n => {
+      const per = Math.max(0, Math.floor(unitsPerDay / n));
+      state.inventory.bread += per; 
+      npcProduced += per;
+      state.stats.totalProduced += per;
+    });
+    
+    let hiredProduced = 0;
+    for(let i=0;i<state.hiredWorkers;i++){
+      const avgNpc = npcWorkers.reduce((a,b)=>a+b,0)/npcWorkers.length;
+      const per = Math.max(0, Math.floor(unitsPerDay / avgNpc));
+      state.inventory.bread += per; 
+      hiredProduced += per;
+      state.stats.totalProduced += per;
+    }
+    
+    log(`NPC 生产 ${npcProduced} 件，雇工生产 ${hiredProduced} 件`, 'info');
+    
+    // 新增功能：为所有商品随机增加库存
+    PRODUCTS.forEach(p => {
+      // 随机增加1-5件库存
+      const randomIncrement = Math.floor(Math.random() * 5) + 1;
+      state.inventory[p.id] += randomIncrement;
+      state.stats.totalProduced += randomIncrement;
+      log(`随机增加 ${p.name} ${randomIncrement} 件`, 'info');
+    });
+    
+    state.money -= DAILY_LIFE_COST;
+    log(`支付生活费 ${DAILY_LIFE_COST} 元`, 'info');
+    
+    if(state.hiredWorkers>0){
+      const wages = state.hiredWorkers * WORKER_DAILY_WAGE; 
+      state.money -= wages;
+      state.stats.totalWagesPaid += wages;
+      log(`支付工资 ${wages} 元`, 'info');
+    }
+    
+    // 技术进步
+    npcWorkers = npcWorkers.map(n=>{ 
+      const r=Math.random(); 
+      if(r<0.15) return Math.max(1,n-1); 
+      if(r>0.97) return n+1; 
+      return n; 
+    });
+    
+    if(state.toolsUnlocked){ 
+      state.playerLabor = Math.max(1, state.playerLabor - 1); 
+      log(`工具提升效率：现在每件只需 ${state.playerLabor} 单位劳动`, 'success');
+    }
+    
+    if(state.day >= TOTAL_DAYS){ 
+      concludeGame(); 
+    } else { 
+      state.day += 1; 
+      updateUI(); 
+    }
+    
+    if(state.money < -100){ 
+      concludeGame(true); 
+    }
+  }
+  window.endDay = endDay;
+
+  function buyTool(){ 
+    if(state.money < TOOL_COST){ alert('钱不够买工具。'); return; } 
+    state.money -= TOOL_COST; 
+    state.toolsUnlocked = true; 
+    state.stats.totalToolsBought += 1;
+    log('购买工具：效率提升（每件劳动-1）', 'success'); 
+    updateUI(); 
+  }
+  window.buyTool = buyTool;
+
+  function hireWorker(){ 
+    if(state.money < HIRE_COST){ alert('钱不够雇人。'); return; } 
+    state.money -= HIRE_COST; 
+    state.hiredWorkers += 1; 
+    state.stats.workersHired += 1;
+    log('雇佣1名工人', 'success'); 
+    updateUI(); 
+  }
+  window.hireWorker = hireWorker;
+
+  function formCoop(){ 
+    if(state.coop){ alert('已是合作社'); return; } 
+    if(state.money < state.coopCost){ alert(`钱不够成立合作社（需要 ${state.coopCost} 元）`); return; } 
+    state.money -= state.coopCost; 
+    state.coop = true; 
+    log('成立合作社：以后收益按成员分配', 'success'); 
+    updateUI(); 
+  }
+  window.formCoop = formCoop;
+
+  // --- 演示功能：生产数量为随机值 ---
+  function demoSelfLabor(){
+    // 随机生成生产数量
+    const unitsProduced = Math.floor(Math.random() * 200) + 1; 
+    const price = Math.random() * 50 + 1; // 随机价格
+    const revenue = unitsProduced * price;
+    
+    const resultDiv = el('demoResult');
+    resultDiv.innerHTML = `
+      <div class="demo-result">
+        <p>自己生产演示结果：</p>
+        <p>• 生产数量: <span class="value">${unitsProduced}</span> 件（随机）</p>
+        <p>• 市场价格: <span class="value">${price.toFixed(2)}</span> 元/件</p>
+        <p>• 总收入: <span class="value">${revenue.toFixed(1)}</span> 元</p>
+        <p>• 全部收益归劳动者所有</p>
+      </div>
+    `;
+  }
+
+  function demoHireLabor(){
+    // 随机生成生产数量
+    const unitsProduced = Math.floor(Math.random() * 200) + 1;
+    const price = Math.random() * 30 + 10; // 随机价格
+    const totalValue = unitsProduced * price;
+    const wage = Math.random() * 100 + 100; // 随机工资
+    const surplus = totalValue - wage;
+    
+    const resultDiv = el('demoResult');
+    resultDiv.innerHTML = `
+      <div class="demo-result">
+        <p>雇工生产演示结果：</p>
+        <p>• 工人生产: <span class="value">${unitsProduced}</span> 件（随机）</p>
+        <p>• 商品总价值: <span class="value">${totalValue.toFixed(1)}</span> 元</p>
+        <p>• 支付工资: <span class="value">${wage.toFixed(1)}</span> 元</p>
+        <p>• 剩余价值(利润): <span class="value">${surplus.toFixed(1)}</span> 元</p>
+        <p>• 剩余价值率: <span class="value">${(surplus/wage*100).toFixed(1)}%</span></p>
+      </div>
+    `;
+  }
+
+  window.demoSelfLabor = demoSelfLabor;
+  window.demoHireLabor = demoHireLabor;
+
+  function concludeGame(broken=false){
+    const avgLabor = computeAverageLabor(); 
+    const playerLabor = state.playerLabor;
+    
+    let text = '';
+    let colorClass = '';
+    
+    if(!broken && playerLabor >= avgLabor * 1.20 && state.money < 50){
+      text = `结局：卷入市场竞争（被淘汰）。你 ${playerLabor.toFixed(1)} vs 社会平均 ${avgLabor.toFixed(1)}，资金 ${state.money.toFixed(1)} 元。`;
+      colorClass = 'danger';
+    }
+    else if(broken || state.money < -50){ 
+      text = `结局：破产清算。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'danger';
+    }
+    else if(state.coop && state.money >= 300){ 
+      text = `结局：成功的合作社（共赢）。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'success';
+    }
+    else if(state.coop){ 
+      text = `结局：合作社（勉强维持）。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'warning';
+    }
+    else if(state.hiredWorkers > 3 && state.money >= 1000){ 
+      text = `结局：资本家（积累成功）。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'success';
+    }
+    else if(state.hiredWorkers > 0 && state.money >= 500){ 
+      text = `结局：小企业主（稳定经营）。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'success';
+    }
+    else if(state.money >= 300){ 
+      text = `结局：个体经营者（小有积蓄）。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'success';
+    }
+    else { 
+      text = `结局：勉强维持生计。资金 ${state.money.toFixed(1)} 元。`; 
+      colorClass = 'warning';
+    }
+    
+    el('ending').innerHTML = `<div class="${colorClass}">${text}</div>`;
+    log(`游戏结束：${text}`, colorClass);
+    disableAll();
+    
+    // 5秒后自动返回主界面
+    setTimeout(() => {
+      refreshPage();
+      // 添加游戏结束提示
+      alert(`游戏结束：${text}\n\n已自动返回主界面，您可以重新开始游戏。`);
+    }, 2000);
+  }
+
+  function refreshPage() {
+      // 使用location.reload()方法刷新页面
+      location.reload();
+    }
+
+  function disableAll(){
+    document.querySelectorAll('button').forEach(b=>b.disabled=true);
+    document.querySelectorAll('select').forEach(s=>s.disabled=true);
+    if(autoInterval) {
+      clearInterval(autoInterval);
+      autoInterval = null;
+      el('autoBtn').innerText = '开始自动劳动';
+      el('autoBtn').classList.remove('warning');
+    }
+    
+    // 停止价格定时器
+    stopPriceTimer();
+  }
+
+function showStats() {
+    const stats = state.stats;
+    alert(`游戏统计：
+总生产数量: ${stats.totalProduced} 件
+总销售数量: ${stats.totalSold} 件
+总收入: ${stats.totalRevenue.toFixed(1)} 元
+总工资支出: ${stats.totalWagesPaid.toFixed(1)} 元
+工具购买次数: ${stats.totalToolsBought}
+工人雇佣次数: ${stats.workersHired}`);
+  }
+
+  // initialize
+  renderRoles();
+  
+  // 修复问题：模式选择按钮绑定
+  const demoModeBtn = document.querySelector('.mode-btn:nth-child(1)');
+  const gameModeBtn = document.querySelector('.mode-btn:nth-child(2)');
+  
+  if(demoModeBtn) {
+    demoModeBtn.addEventListener('click', () => selectMode('demo'));
+  }
+  
+  if(gameModeBtn) {
+    gameModeBtn.addEventListener('click', () => selectMode('game'));
+  }
+  
+  // 修复问题：理论简介按钮绑定
+  const theoryButton = document.getElementById('theoryBtn');
+  if(theoryButton) {
+    theoryButton.addEventListener('click', showTheory);
+  }
+  
+  // 确保work函数全局可访问
+  window.work = work;
+}); // DOMContentLoaded end
+
+
+</script>
+</body>
+</html>
